@@ -30,6 +30,7 @@ class MapState extends State<MapWidget> {
       _markers.clear();
       for (final location in locations) {
         var day = location.mostRecentDate;
+
         final fullName = location.state == ''
             ? location.country
             : location.country + ' (' + location.state + ')';
@@ -41,12 +42,7 @@ class MapState extends State<MapWidget> {
               : BitmapDescriptor.hueGreen),
           infoWindow: InfoWindow(
             title: fullName,
-            snippet: location.cases[day].toString() +
-                ' new confirmed cases on ' +
-                day +
-                '. ' +
-                location.totalCases.toString() +
-                ' total cases.',
+            snippet: location.totalCases.toString() + ' cases.',
           ),
         );
         _markers[fullName] = marker;

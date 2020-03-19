@@ -18,9 +18,10 @@ class CovidLocation {
     var totalCases = 0;
     var mostRecentDate = '';
     for (var i = 4; i < headers.length; i++) {
-      cases[headers[i]] = row[i].toInt();
-      totalCases += row[i].toInt();
-      mostRecentDate = headers[i];
+      var count = row[i] == '' ? 0 : row[i].toInt();
+      cases[headers[i]] = count;
+      totalCases = count;
+      if (row[i] != '') mostRecentDate = headers[i];
     }
     return CovidLocation(
         country: row[1].toString(),
@@ -47,7 +48,7 @@ Future<List<CovidLocation>> getConfirmedCases() async {
 
   final response = await http.get(csvUrl);
   if (response.statusCode == 200) {
-    final rows = CsvToListConverter().convert(response.body);
+    final rows = CsvToListConverter(eol: '\n').convert(response.body);
     final headers = rows[0];
     var covidLocations = <CovidLocation>[];
     for (var i = 1; i < rows.length; i++) {
