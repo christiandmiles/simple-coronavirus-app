@@ -2,7 +2,9 @@
 
 This is a simple flutter app designed to display the CDC guidance from https://www.cdc.gov/coronavirus/2019-ncov/prepare/prevention.html
 
-It also includes a map showing confirmed cases as listed in https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv
+It also includes a map showing cases for the US states with data from https://corona.lmao.ninja/states
+
+The latest state info page provides 5 news articles for each state sourced from https://newsapi.org
 
 It was tested on a Pixel 3 (Android) but should also work on iOS.
 
